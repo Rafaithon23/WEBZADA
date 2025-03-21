@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 *{
@@ -225,7 +224,7 @@ header img{
     
 }
 
-.depoimentos h2 {
+.depoimentos > h2 {
     font-size: 28px;
     color: #f42D74;
     margin-bottom: 30px;
@@ -240,51 +239,50 @@ header img{
     margin: auto;
 }
 
-.depoimento-card {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    text-align: left;
-    gap: 15px;
-}
 
-.depoimento-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.depoimento-info img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #0664ac;
-}
-
-.depoimento-texto {
+.depoimento-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: left;
+    gap: 15px;
+    border: #E6E6E6 1px solid;
+    padding: 20px;
 }
-
-.depoimento-card p {
-    font-size: 16px;
+.depoimento-wrapper p{
+    font-size: 18px;
+    line-height: 30px;
     color: #333;
     font-style: italic;
     margin-bottom: 5px;
 }
 
-.autor {
-    font-weight: bold;
-    font-size: 14px;
-    color: #0664ac;
+.person-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.person-wrapper img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0664ac;
+}
+.person-wrapper .person-name{
+    & h2{
+        font-weight: bold;
+        font-size: 16px;
+        color: #0664ac;
+    }
+    & p{
+        font-size: 14px;
+        color: #666;
+    }
 }
 
-.usuario {
-    font-size: 13px;
-    color: #666;
+
+.depoimento-texto {
+    display: flex;
+    flex-direction: column;
 }
 
