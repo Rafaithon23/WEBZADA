@@ -266,13 +266,13 @@ header img{
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #0664ac;
+    border: 2px solid #f42D74;
 }
 .person-wrapper .person-name{
     & h2{
         font-weight: bold;
         font-size: 16px;
-        color: #0664ac;
+        color: #f42D74;
     }
     & p{
         font-size: 14px;
