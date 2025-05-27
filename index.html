@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projeto Além de Mim - Iniciativa de impacto social em Pitangueiras, SP">
 
@@ -87,50 +87,24 @@
     </section>
 
     <section id="projetos" class="projetos">
-        <div class="container">
-            <h2 class="secao-titulo">Projetos / Ações</h2>
-
-            <div class="grid-container">
-                <article class="projeto">
-                    <img src="imagens/bazar.png" alt="Bazar Beneficente" class="projeto-image">
-
-                    <div class="projeto-conteudo">
-                        <h3 class="projeto-titulo">Bazar Beneficente - Dia das Mulheres</h3>
-                        <p class="projeto-descricao">Roupas a preços acessíveis e mimos especiais para mulheres no Dia
-                            das Mulheres.</p>
-                    </div>
-                </article>
-
-                <article class="projeto">
-                    <img src="imagens/pascoa.png" alt="Ação de Páscoa" class="projeto-image">
-
-                    <div class="projeto-conteudo">
-                        <h3 class="projeto-titulo">Ação de Páscoa</h3>
-                        <p class="projeto-descricao">Alegrando crianças da comunidade com doces e momentos especiais na
-                            Páscoa.</p>
-                    </div>
-                </article>
-
-                <article class="projeto">
-                    <img src="imagens/crianças.png" alt="Ação de Dia das Crianças" class="projeto-image">
-
-                    <div class="projeto-conteudo">
-                        <h3 class="projeto-titulo">Ação de Dia das Crianças</h3>
-                        <p class="projeto-descricao">Gincanas, brinquedos e diversão para as crianças da cidade, com
-                            apoio das rifas.</p>
-                    </div>
-                </article>
-
-                <article class="projeto">
-                    <img src="imagens/projeto.png" alt="Ação de Natal" class="projeto-image">
-
-                    <div class="projeto-conteudo">
-                        <h3 class="projeto-titulo">Ação de Natal</h3>
-                        <p class="projeto-descricao">Ação especial de fim de ano para as crianças em Pitangueiras.</p>
-                    </div>
-                </article>
+       <section class="carrossel">
+    <div class="container">
+        <h2 class="secao-titulo">Projetos e Ações</h2>
+        
+        <div class="carrossel-container">
+            <div class="carrossel-slides">
+                <!-- As imagens ser�o adicionadas via JavaScript -->
+                </div>
+            
+                <button class="carrossel-btn carrossel-prev" aria-label="Slide anterior">&#10094;</button>
+                <button class="carrossel-btn carrossel-next" aria-label="Pr�ximo slide">&#10095;</button>
+            
+                <div class="carrossel-dots">
+                    <!-- Os dots ser�o adicionados via JavaScript -->
+                </div>
             </div>
-
+        </div>
+    </section>
             <div class="btnDoe">
                 <a href="#ajudar" class="btn-primary btn-large">Doe agora</a>
             </div>
@@ -304,6 +278,85 @@
                 <p class="copyright">&copy; 2023 Projeto Além de Mim. Todos os direitos reservados.</p>
             </div>
         </div>
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Imagens do carrossel (voc� pode adicionar mais)
+    const images = [
+        'imagens/bazar.png',
+        'imagens/pascoa.png',
+        'imagens/crianças.png',
+        'imagens/projeto.png',
+    ];
+    
+    const carrosselSlides = document.querySelector('.carrossel-slides');
+    const carrosselDots = document.querySelector('.carrossel-dots');
+    const prevBtn = document.querySelector('.carrossel-prev');
+    const nextBtn = document.querySelector('.carrossel-next');
+    
+    let currentSlide = 0;
+    
+    // Criar slides e dots
+    images.forEach((image, index) => {
+        // Criar slide
+        const slide = document.createElement('div');
+        slide.className = 'carrossel-slide';
+        slide.innerHTML = `<img src="${image}" alt="Projeto Al�m de Mim ${index + 1}">`;
+        carrosselSlides.appendChild(slide);
+        
+        // Criar dot
+        const dot = document.createElement('span');
+        dot.className = 'carrossel-dot';
+        if (index === 0) dot.classList.add('active');
+        dot.dataset.slide = index;
+        dot.addEventListener('click', () => goToSlide(index));
+        carrosselDots.appendChild(dot);
+    });
+    
+    // Fun��o para atualizar o carrossel
+    function updateCarrossel() {
+        carrosselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Atualizar dots ativos
+        document.querySelectorAll('.carrossel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    // Fun��o para ir para um slide espec�fico
+    function goToSlide(slideIndex) {
+        currentSlide = (slideIndex + images.length) % images.length;
+        updateCarrossel();
+    }
+    
+    // Event listeners para os bot�es
+    prevBtn.addEventListener('click', () => {
+        goToSlide(currentSlide - 1);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        goToSlide(currentSlide + 1);
+    });
+    
+    // Auto-play (opcional)
+    let interval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+    }, 5000);
+    
+    // Pausar auto-play quando o mouse estiver sobre o carrossel
+    carrosselSlides.parentElement.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+    });
+    
+    carrosselSlides.parentElement.addEventListener('mouseleave', () => {
+        interval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000);
+    });
+    
+    // Inicializar o carrossel
+    updateCarrossel();
+});
+</script>
     </footer>
 </body>
 
